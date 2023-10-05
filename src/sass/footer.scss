@@ -1,0 +1,20 @@
+@import url("./reset.scss");
+
+footer {
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+
+  p {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    line-height: normal;
+    padding: 7px 0;
+    @media screen and (max-width:675px) {
+      margin: 0 auto;
+    }
+  }
+}
