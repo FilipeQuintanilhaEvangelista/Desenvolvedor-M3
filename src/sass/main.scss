@@ -1,0 +1,22 @@
+main{
+  padding: 40px 162px 32px;
+  .top-main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .titulo{
+      color: #333;
+      font-size: 32px;
+      font-weight: 400;
+    }
+  }
+
+  .bot-main{
+    display: flex;
+    padding-top: 65px;
+    gap: 44px;
+    .teste{
+      width: 157px;
+    }
+  }
+}
