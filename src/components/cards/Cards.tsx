@@ -1,27 +1,9 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import "../../sass/cards.scss";
-import axios from "axios";
 import { useSearchContext } from "../../context/SearchContext";
 
 function Cards() {
-  const { products, setProducts, bagCount, setBagCount } = useSearchContext();
-
-  const getProducts = useCallback(async () => {
-    try {
-      const resp = await axios.get("http://localhost:5000/products");
-      const data: TProduct[] = await resp.data;
-
-      console.log(data);
-      setProducts(data);
-    } catch (error) {
-      console.error("Erro ao buscar produtos:", error);
-    }
-  }, [setProducts]);
-
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
-
+  const { products, bagCount, setBagCount } = useSearchContext();
 
   const formatPrice = (price: number) => {
     return price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });

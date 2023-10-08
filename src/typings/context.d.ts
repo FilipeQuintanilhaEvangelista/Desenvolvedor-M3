@@ -11,6 +11,8 @@ type TContext = {
   setSelectedSizes: React.Dispatch<React.SetStateAction<string[]>>,
   selectedPrices: number[],
   setSelectedPrices: React.Dispatch<React.SetStateAction<number[]>>,
+  orderBy: "" | "date-desc" | "price-asc" | "price-desc",
+  setOrderBy:  React.Dispatch<React.SetStateAction<"" | "date-desc" | "price-asc" | "price-desc">>
 };
 
 type TChildrenPass = {
