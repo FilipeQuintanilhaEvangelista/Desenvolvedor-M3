@@ -1,5 +1,4 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import axios from "axios";
+import React, { createContext, useContext, useMemo, useState } from "react";
 
 export const SearchContext = createContext({} as TContext);
 
@@ -10,22 +9,7 @@ export const SearchProvider = ({ children }: TChildrenPass) => {
   const [selectedColors, setSelectedColors] = useState([""]);
   const [selectedSizes, setSelectedSizes] = useState([""]);
   const [selectedPrices, setSelectedPrices] = useState([0]);
-
-  const getProducts = useCallback(async () => {
-    try {
-      const resp = await axios.get("http://localhost:5000/products");
-      const data: TProduct[] = await resp.data;
-
-      console.log(data);
-      setProducts(data);
-    } catch (error) {
-      console.error("Erro ao buscar produtos:", error);
-    }
-  }, [setProducts]);
-
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+  
 
   const memoValues = useMemo(
     () => ({
