@@ -1,9 +1,17 @@
 main{
   padding: 40px 162px 32px;
+  @media screen and (max-width:600px) {
+    padding: 24px 16px 44px;
+  }
   .top-main{
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width:600px) {
+      justify-content: center;
+    }
+
     .titulo{
       color: #333;
       font-size: 32px;

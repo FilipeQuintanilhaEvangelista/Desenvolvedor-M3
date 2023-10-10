@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../sass/cards.scss";
 import { useSearchContext } from "../../context/SearchContext";
 import { formatPrice } from "../../utils/FormatPrice";
@@ -6,6 +6,20 @@ import { formatPrice } from "../../utils/FormatPrice";
 function Cards() {
   const { products, bagCount, setBagCount } = useSearchContext();
   const [numberMaxProducts, setNumberMaxProducts] = useState<number>(9);
+
+  const handleResize = () => {
+    if (window.innerWidth < 600) {
+      setNumberMaxProducts(4);
+    } else {
+      setNumberMaxProducts(9);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="main-content">

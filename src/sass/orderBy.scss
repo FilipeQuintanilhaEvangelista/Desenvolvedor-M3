@@ -9,6 +9,10 @@
   height: 42px;
   width: 142px;
 
+  @media screen and (max-width:600px) {
+    display: none;
+  }
+
   .orderBy-label {
     font-size: 16px;
     line-height: 22px;
