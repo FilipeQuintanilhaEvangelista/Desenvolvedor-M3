@@ -1,22 +1,38 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "../../sass/filter.scss";
 import { useSearchContext } from "../../context/SearchContext";
+import { SmallArrow } from "./SmallArrow";
 
 function FilterColor() {
-  const { products } = useSearchContext();
+  const { products, setSelectedColors } = useSearchContext();
   const [numberMaxColor, setNumberMaxColor] = useState<number>(5);
 
-  const uniqueSortedColors = [...new Set(products.map(product => product.color))].sort((a, b) => a.localeCompare(b));
+  const uniqueSortedColors = [
+    ...new Set(products.map((product) => product.color)),
+  ].sort((a, b) => a.localeCompare(b));
+
+  const handleChange = useCallback((color: string) => {
+    setSelectedColors((prevSelectedColors) => {
+      let updatedColors: string[];
+      if (!prevSelectedColors.includes(color)) {
+        updatedColors = [...prevSelectedColors, color];
+      } else {
+        updatedColors = prevSelectedColors.filter((c) => c !== color);
+      }
+      updatedColors = updatedColors.filter((c) => c !== "");
+
+      return updatedColors;
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="colors-container">
       <p className="colors-title">Cores</p>
-      {uniqueSortedColors.slice(0, numberMaxColor).map(color => (
+      {uniqueSortedColors.slice(0, numberMaxColor).map((color) => (
         <div className="color" key={color}>
-          <input id={color} type="checkbox" />
-          <label htmlFor={color}>
-            {color}
-          </label>
+          <input id={color} type="checkbox" onChange={() => handleChange(color)} />
+          <label htmlFor={color}>{color}</label>
         </div>
       ))}
       {numberMaxColor < uniqueSortedColors.length && (
@@ -25,9 +41,7 @@ function FilterColor() {
           onClick={() => setNumberMaxColor(uniqueSortedColors.length)}
         >
           <p>Ver todas as cores</p>
-          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="7" viewBox="0 0 9 7" fill="none">
-<path d="M1 1L4.5 6L8 1.00519" stroke="#666666" stroke-linecap="round"/>
-</svg>
+          <SmallArrow />
         </div>
       )}
     </div>

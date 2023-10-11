@@ -3,14 +3,14 @@ type TContext = {
   setBagCount: React.Dispatch<React.SetStateAction<number>>,
   products: TProduct[],
   setProducts: React.Dispatch<React.SetStateAction<TProduct[]>>,
-  productsToRender: TProduct[] | undefined,
+  productsToRender: TProduct[],
   setProductsToRender: React.Dispatch<React.SetStateAction<TProduct[]>>,
   selectedColors: string[],
   setSelectedColors: React.Dispatch<React.SetStateAction<string[]>>,
   selectedSizes: string[],
   setSelectedSizes: React.Dispatch<React.SetStateAction<string[]>>,
-  selectedPrices: number[],
-  setSelectedPrices: React.Dispatch<React.SetStateAction<number[]>>,
+  selectedPrices: TPrice,
+  setSelectedPrices: React.Dispatch<React.SetStateAction<TPrice>>,
   orderBy: "" | "date-desc" | "price-asc" | "price-desc",
   setOrderBy:  React.Dispatch<React.SetStateAction<"" | "date-desc" | "price-asc" | "price-desc">>
 };
@@ -33,3 +33,9 @@ type TProduct = {
   size: string[];
   date: string;
 };
+
+type TPrice = {
+  price_gte: number;
+  key: string;
+  price_lte: number;
+}

@@ -4,7 +4,7 @@ import { useSearchContext } from "../../context/SearchContext";
 import { formatPrice } from "../../utils/FormatPrice";
 
 function Cards() {
-  const { products, bagCount, setBagCount } = useSearchContext();
+  const { productsToRender, bagCount, setBagCount } = useSearchContext();
   const [numberMaxProducts, setNumberMaxProducts] = useState<number>(9);
 
   const handleResize = () => {
@@ -24,7 +24,7 @@ function Cards() {
   return (
     <div className="main-content">
       <div className="cards-container">
-        {products.slice(0, numberMaxProducts).map((product) => (
+        {productsToRender.slice(0, numberMaxProducts).map((product) => (
           <div className="product" key={product.id}>
             <img
               className="product-image"
@@ -46,10 +46,10 @@ function Cards() {
           </div>
         ))}
       </div>
-      {numberMaxProducts < products.length && (
+      {numberMaxProducts < productsToRender.length && (
         <button
           className="load-more"
-          onClick={() => setNumberMaxProducts(products.length)}
+          onClick={() => setNumberMaxProducts(productsToRender.length)}
         >
           Carregar mais
         </button>
