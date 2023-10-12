@@ -7,7 +7,6 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { isMobile } from "react-device-detect";
 
 export const SearchContext = createContext({} as TContext);
 
@@ -21,7 +20,6 @@ export const SearchProvider = ({ children }: TChildrenPass) => {
   const [orderBy, setOrderBy] = useState<
     "date-desc" | "price-asc" | "price-desc" | ""
   >("");
-  const [filterState, setFilterState] = useState(!isMobile);
 
   const getProducts = useCallback(async () => {
     try {

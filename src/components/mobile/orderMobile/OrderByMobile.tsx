@@ -12,8 +12,8 @@ function OrderByMobile() {
       <button onClick={() => setIsOpen(!isOpen)} className="menu-item">
         {labelOrderBy}
       </button>
-      {isOpen && (
-        <div className="menu-fullScreen">
+      
+        <div className={`menu-fullScreen ${isOpen ? "open-menu" : ""}`}>
           <div className="top">
             <h1>Ordernar</h1>
             <button
@@ -54,7 +54,7 @@ function OrderByMobile() {
             </li>
           </ul>
         </div>
-      )}
+      
     </>
   );
 }

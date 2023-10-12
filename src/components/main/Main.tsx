@@ -3,14 +3,15 @@ import "../../sass/main.scss";
 import BotMain from "./BotMain";
 import TopMain from "./TopMain";
 import Mobile from "../mobile/Mobile";
+import { useIsMobile } from "../../hooks/useIsMobile";
 
 
 function Main() {
-
+  const isMobile = useIsMobile();
   return (
     <main>  
       <TopMain />
-      <Mobile />
+      {isMobile?<Mobile />: null}
       <BotMain />
     </main>
   );

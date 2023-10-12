@@ -2,24 +2,21 @@ import React, { useEffect, useState } from "react";
 import "../../sass/cards.scss";
 import { useSearchContext } from "../../context/SearchContext";
 import { formatPrice } from "../../utils/FormatPrice";
+import { useIsMobile } from "../../hooks/useIsMobile";
 
 function Cards() {
   const { productsToRender, bagCount, setBagCount } = useSearchContext();
   const [numberMaxProducts, setNumberMaxProducts] = useState<number>(9);
+  const isMobile = useIsMobile();
 
-  const handleResize = () => {
-    if (window.innerWidth < 600) {
-      setNumberMaxProducts(4);
-    } else {
-      setNumberMaxProducts(9);
+  useEffect(()=> {
+    if(isMobile){
+    setNumberMaxProducts(4)
     }
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    else{
+      setNumberMaxProducts(9)
+    }
+  }, [isMobile])
 
   return (
     <div className="main-content">
