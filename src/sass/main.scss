@@ -23,5 +23,9 @@ main{
     display: flex;
     padding-top: 65px;
     gap: 44px;
+
+    @media screen and (max-width:600px) {
+      padding-top: 34px;
+    }
   }
 }

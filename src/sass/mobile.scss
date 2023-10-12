@@ -1,0 +1,250 @@
+.menu-mobile {
+  display: none;
+  @media screen and (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  .menu-item {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    width: 171px;
+    font-size: 16px;
+    line-height: 22px;
+    background-color: white;
+  }
+  .menu-fullScreen {
+    position: absolute;
+    background-color: white;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #666;
+
+      h1 {
+        color: #666;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+
+      button {
+        border: none;
+        background-color: white;
+        outline: none;
+      }
+    }
+
+    .list {
+      padding-left: 16px;
+      list-style-type: none;
+
+      li {
+        color: #000;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 30px;
+      }
+    }
+
+    .filter-list {
+      padding: 0 16px;
+      list-style-type: none;
+
+      .list-item {
+        margin-bottom: 30px;
+
+        .opcao {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+        }
+
+        button {
+          color: #666;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          border: none;
+          background-color: white;
+          outline: none;
+        }
+      }
+
+      //filtro de cor
+      .colors-container {
+        position: relative;
+        margin-top: -10px;
+        padding-left: 2px;
+        margin-bottom: 22px;
+
+        .colors-title {
+          display: none;
+        }
+        .color {
+          margin-bottom: 8px;
+
+          & input {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+          }
+
+          & label {
+            font-size: 14px;
+            line-height: 14px;
+            color: #000;
+            font-weight: 400;
+          }
+        }
+
+        .color input[type="checkbox"] + label {
+          position: relative;
+          cursor: pointer;
+          padding-left: 24px;
+          padding-bottom: 1px;
+        }
+
+        .color input[type="checkbox"] + label::before {
+          content: "";
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          left: 0;
+          bottom: 2px;
+          border: solid 1px rgba(0, 0, 0, 0.5);
+          vertical-align: bottom;
+        }
+
+        .color input[type="checkbox"]:checked + label::after {
+          content: "";
+          position: absolute;
+          left: 3px;
+          bottom: 5px;
+          width: 11px;
+          height: 11px;
+          background: #00c0ee;
+        }
+      }
+
+      //filtro de tamanhos
+
+      .sizes-div {
+        width: 153px;
+        margin-top: -10px;
+        margin-bottom: 30px;
+
+        .sizes-title {
+          display: none;
+        }
+        .sizes-container {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 8px;
+
+          & input {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+          }
+
+          & label {
+            display: block;
+            cursor: pointer;
+          }
+        }
+
+        .sizes-container input[type="checkbox"] + button {
+          border-radius: none;
+          border: 1px solid rgba(0, 0, 0, 0.5);
+          color: rgba(0, 0, 0, 0.5);
+          font-size: 16px;
+          background: #fff;
+          width: 32px;
+          height: 32px;
+        }
+
+        .sizes-container input[type="checkbox"]:checked + button {
+          border: 2px solid #00c0ee;
+          color: #000;
+        }
+      }
+
+      //filtro de preços
+      .price-container {
+        margin-top: -10px;
+        
+        .price-title {
+          display: none;
+        }
+
+        .price {
+          margin-bottom: 8px;
+
+          & input {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+          }
+
+          & label {
+            font-size: 14px;
+            line-height: 14px;
+            color: #000;
+            font-weight: 400;
+          }
+        }
+
+        .price input[type="checkbox"] + label {
+          position: relative;
+          cursor: pointer;
+          padding-left: 24px;
+          padding-bottom: 1px;
+        }
+
+        .price input[type="checkbox"] + label::before {
+          content: "";
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          left: 0;
+          bottom: 2px;
+          border: solid 1px rgba(0, 0, 0, 0.5);
+          vertical-align: bottom;
+        }
+
+        .price input[type="checkbox"]:checked + label::after {
+          content: "";
+          position: absolute;
+          left: 3px;
+          bottom: 5px;
+          width: 11px;
+          height: 11px;
+          background: #00c0ee;
+        }
+      }
+    }
+  }
+}
